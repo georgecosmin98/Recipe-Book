@@ -14,4 +14,10 @@ export class DataStorageService {
             console.log(response);
         });
     }
+
+    fetchRecipes() {
+        this.http.get<Recipe[]>('https://recipe-book-5eb22-default-rtdb.firebaseio.com/recipes.json').subscribe(recipes=> {
+            this.recipeService.setRecipes(recipes);
+        })
+    }
 }
