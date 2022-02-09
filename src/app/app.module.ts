@@ -20,11 +20,7 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
   declarations: [
     AppComponent,
     HeaderComponent,
-    DropdownDirective,
     AuthComponent,
-    LoadingSpinnerComponent,
-    AlertComponent,
-    PlaceholderDirective
   ],
   imports: [
     BrowserModule,
