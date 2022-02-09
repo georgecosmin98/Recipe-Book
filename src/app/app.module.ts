@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core.module';
 import { HeaderComponent } from './header/header.component';
+import { LoggingService } from './logging.service';
 import { SharedModule } from './shared/shared.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 
@@ -23,7 +24,7 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
     SharedModule,
     CoreModule
   ],
-  providers: [],
+  // providers: [LoggingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
