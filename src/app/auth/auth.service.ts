@@ -15,6 +15,7 @@ export interface AuthResponseData {
 import { FIREBASE_API_KEY } from '../../environment'
 import { UserModel } from "./user.model";
 import { Router } from "@angular/router";
+import { environment } from "src/environments/environment";
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -25,7 +26,7 @@ export class AuthService {
     constructor(private http: HttpClient, private router: Router) { }
 
     signup(email: string, password: string) {
-        return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FIREBASE_API_KEY}`, {
+        return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.firebaseAPIKey}`, {
             email: email,
             password: password,
             returnSecureToken: true
@@ -33,7 +34,7 @@ export class AuthService {
     }
 
     login(email: string, password: string) {
-        return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${FIREBASE_API_KEY}`, {
+        return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.firebaseAPIKey}`, {
             email: email,
             password: password,
             returnSecureToken: true
@@ -54,7 +55,7 @@ export class AuthService {
 
         if (loadedUser.token) {
             this.user.next(loadedUser);
-            const expirationDuration= new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
+            const expirationDuration = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
             this.autoLogout(expirationDuration);
         }
     }
