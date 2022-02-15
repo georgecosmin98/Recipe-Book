@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { LoggingService } from './logging.service';
 import { SharedModule } from './shared/shared.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ShoppingListModule } from './shopping-list/shopping-list.module';
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    BrowserAnimationsModule
   ],
   // providers: [LoggingService],
   bootstrap: [AppComponent]

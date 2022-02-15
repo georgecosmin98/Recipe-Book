@@ -1,0 +1,18 @@
+.navbar{
+  background-color: #3F51B5;
+  margin-bottom: 0px;
+}
+
+a{
+  color: white;
+}
+
+ul.nav a:hover,
+ul.nav a:focus,
+.nav .open>a,
+.active {
+  background-color: #252F69!important;
+  color: white;
+  border-radius: 10px;
+}
+
