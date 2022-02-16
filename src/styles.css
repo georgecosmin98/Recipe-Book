@@ -8,3 +8,20 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .mat-icon{
   vertical-align: bottom;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.btn-primary{
+  background-color: #3F51B5;
+  border-radius: 10px;
+}
+
+.btn-primary:hover{
+  background-color: #252F69;
+  border-radius: 10px;
+}
+
+.primary-color{
+  color: #3F51B5;
+}
