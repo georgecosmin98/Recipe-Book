@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -15,6 +16,7 @@ export class RecipeEditComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private recipeService: RecipeService,
+    private dataStorageService: DataStorageService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -30,9 +32,11 @@ export class RecipeEditComponent implements OnInit {
   onSubmit() {
     if (this.editMode) {
       this.recipeService.updateRecipe(this.id, this.recipeForm.value);
+      this.dataStorageService.storeRecipes();
     }
     else {
       this.recipeService.addRecipe(this.recipeForm.value);
+      this.dataStorageService.storeRecipes();
     }
     this.onCancel();
   }

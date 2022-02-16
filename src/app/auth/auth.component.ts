@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, OnDestroy, ViewChild } from "@angular/core";
+import { Component, ComponentFactoryResolver, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Observable, Subscription } from "rxjs";
@@ -12,13 +12,19 @@ import { AuthResponseData, AuthService } from "./auth.service";
     styleUrls: ['./auth.component.css'],
 
 })
-export class AuthComponent implements OnDestroy {
+export class AuthComponent implements OnDestroy,OnInit {
     isLoginMode = true;
     isLoading = false;
     error: string = null;
+    hide = true;
+
     @ViewChild(PlaceholderDirective) alertHost: PlaceholderDirective;
     private closeSub: Subscription = new Subscription();
     constructor(private authService: AuthService, private router: Router, private componentFactoryResolver: ComponentFactoryResolver) { }
+
+    ngOnInit(): void {
+      document.body.style.setProperty('background-color', '#e0e0e0')
+  }
 
     onSwitchMode() {
         this.isLoginMode = !this.isLoginMode;
@@ -75,6 +81,8 @@ export class AuthComponent implements OnDestroy {
     ngOnDestroy(): void {
         if (this.closeSub)
             this.closeSub.unsubscribe();
+
+        document.body.style.setProperty('background-color', '#ffffff')
     }
 
 }
