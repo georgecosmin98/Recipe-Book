@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, Params, Router } from '@angular/router';
+import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { Recipe } from '../../recipe.model';
 import { RecipeService } from '../../recipe.service';
 
@@ -13,7 +14,8 @@ export class RecipeItemComponent implements OnInit {
   @Input() index: number;
   linkEnabled = true;
 
-  constructor(private route: ActivatedRoute, private router: Router, private recipeService : RecipeService) {}
+  constructor(private route: ActivatedRoute, private router: Router, private recipeService : RecipeService,
+    private dataStorageService: DataStorageService) {}
 
   ngOnInit(): void {}
 
@@ -25,5 +27,11 @@ export class RecipeItemComponent implements OnInit {
 
   onAddToShoppingList() {
     this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
+  }
+
+  onDeleteRecipe() {
+    this.recipeService.deleteRecipe(this.index);
+    this.dataStorageService.storeRecipes();
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 }

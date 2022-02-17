@@ -1,7 +1,3 @@
-<!-- <a
-style="cursor: pointer;"
-[routerLink]="[index]"
-routerLinkActive="active"> -->
 <mat-card style="height: 100px; padding:0; margin-bottom: 10px; border-radius: 10px;">
   <div>
     <div class="row" style="height: 100px;">
@@ -11,22 +7,17 @@ routerLinkActive="active"> -->
       <div class="col-md-9" style="margin-top: 10px;" style="cursor: pointer;" [routerLink]="[index]">
         <mat-card-content>
           <mat-card-title style="margin-left: 8px; font-size: 20px;">{{recipe.name}}
-            <button type="button" class="navbar-toggle">
-              <span class="icon-bar">Hello</span>
-            </button>
+              <a style="float:right; margin-right:3%" (click)="  onDeleteRecipe()">
+                <mat-icon aria-hidden="false" class="delete-icon">delete</mat-icon>
+              </a>
           </mat-card-title>
           <mat-card-subtitle style="margin-left: 8px; font-size: 14px;">{{recipe.description}}</mat-card-subtitle>
-          <!-- <mat-card-actions align="center">
-          <button mat-button>TO SHOPPING LIST</button>
-          <button mat-button (click)="onEditRecipe()">EDIT</button>
-        </mat-card-actions> -->
         </mat-card-content>
       </div>
       <mat-card-actions align="center" style="margin-top: 5px;">
-        <button mat-button (click)="onAddToShoppingList()">TO SHOPPING LIST</button>
+        <button mat-button (click)="onEditRecipe()">TO SHOPPING LIST</button>
         <button mat-button (click)="onEditRecipe()">EDIT</button>
       </mat-card-actions>
     </div>
   </div>
 </mat-card>
-<!-- </a> -->
