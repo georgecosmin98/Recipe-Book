@@ -20,6 +20,7 @@ export class RecipeEditComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    console.log("edit")
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];

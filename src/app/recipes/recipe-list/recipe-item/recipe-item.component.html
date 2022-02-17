@@ -1,17 +1,32 @@
-<a
-style="cursor: pointer;" 
+<!-- <a
+style="cursor: pointer;"
 [routerLink]="[index]"
-routerLinkActive="active"
-class="list-group-item clearfix">
-    <div class="pull-left">
-        <h4 class="list-group-item-heading">{{recipe.name}}</h4>
-        <p class="list-group-item-text">{{recipe.description}}</p>
+routerLinkActive="active"> -->
+<mat-card style="height: 100px; padding:0; margin-bottom: 10px; border-radius: 10px;">
+  <div>
+    <div class="row" style="height: 100px;">
+      <div class="col-md-3" style="cursor: pointer;" [routerLink]="[index]">
+        <img src={{recipe.imagePath}}>
+      </div>
+      <div class="col-md-9" style="margin-top: 10px;" style="cursor: pointer;" [routerLink]="[index]">
+        <mat-card-content>
+          <mat-card-title style="margin-left: 8px; font-size: 20px;">{{recipe.name}}
+            <button type="button" class="navbar-toggle">
+              <span class="icon-bar">Hello</span>
+            </button>
+          </mat-card-title>
+          <mat-card-subtitle style="margin-left: 8px; font-size: 14px;">{{recipe.description}}</mat-card-subtitle>
+          <!-- <mat-card-actions align="center">
+          <button mat-button>TO SHOPPING LIST</button>
+          <button mat-button (click)="onEditRecipe()">EDIT</button>
+        </mat-card-actions> -->
+        </mat-card-content>
+      </div>
+      <mat-card-actions align="center" style="margin-top: 5px;">
+        <button mat-button (click)="onAddToShoppingList()">TO SHOPPING LIST</button>
+        <button mat-button (click)="onEditRecipe()">EDIT</button>
+      </mat-card-actions>
     </div>
-    <span class="pull-right">
-        <img 
-        [src]="recipe.imagePath" 
-        alt="{{recipe.name}}" 
-        class="img-responsive" 
-        style="max-height: 50px;">
-    </span>
-</a>
+  </div>
+</mat-card>
+<!-- </a> -->

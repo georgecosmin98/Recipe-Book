@@ -8,7 +8,8 @@ import { AlertComponent } from './alert/alert.component';
 import { DropdownDirective } from './dropdown.directive';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { PlaceholderDirective } from './placeholder/placeholder.directive';
-
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     AlertComponent,
@@ -26,6 +27,8 @@ import { PlaceholderDirective } from './placeholder/placeholder.directive';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [LoggingService],
 })
