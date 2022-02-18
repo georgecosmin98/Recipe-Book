@@ -52,7 +52,6 @@ export class AuthComponent implements OnDestroy,OnInit {
             this.router.navigate(['/recipes'])
         }, errorMessage => {
             console.log(String(errorMessage));
-            // this.error = errorMessage;
             this.showErrorAlert(errorMessage);
             this.isLoading = false;
         });
@@ -64,9 +63,6 @@ export class AuthComponent implements OnDestroy,OnInit {
     }
 
     private showErrorAlert(message: string) {
-        // console.log(this.closeSub)
-        // const alertCmp = new AlertComponent();
-        // const alertCmpFactory = this.componentFactoryResolver.resolveComponentFactory(AlertComponent);
         const hostViewContainerRef = this.alertHost.viewContainerRef;
         hostViewContainerRef.clear();
 
@@ -81,7 +77,6 @@ export class AuthComponent implements OnDestroy,OnInit {
     ngOnDestroy(): void {
         if (this.closeSub)
             this.closeSub.unsubscribe();
-
         document.body.style.setProperty('background-color', '#ffffff')
     }
 

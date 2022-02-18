@@ -26,7 +26,6 @@ import { MatInputModule } from '@angular/material/input';
     CoreModule,
     BrowserAnimationsModule,
   ],
-  // providers: [LoggingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,16 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
 import { LoggingService } from '../logging.service';
 import { AlertComponent } from './alert/alert.component';
+import { AngularMaterialModule } from './angular-material.module';
 import { DropdownDirective } from './dropdown.directive';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 import { PlaceholderDirective } from './placeholder/placeholder.directive';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -26,12 +21,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     PlaceholderDirective,
     DropdownDirective,
     CommonModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
-    MatButtonModule,
-    MatToolbarModule
+    AngularMaterialModule
   ],
   providers: [LoggingService],
 })
