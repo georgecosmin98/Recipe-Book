@@ -21,10 +21,12 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
       (ingredients: Ingredient[]) => this.ingredients = ingredients
     )
     this.loggingService.printLog("Hello from Shopping List Component ngOnInit")
+    document.body.style.setProperty('background-color', '#e0e0e0')
   }
 
   ngOnDestroy(): void {
     this.igChangeSub.unsubscribe();
+    document.body.style.setProperty('background-color', '#ffffff')
   }
 
   onEditItem(index: number){
