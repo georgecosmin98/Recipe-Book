@@ -1,0 +1,21 @@
+img {
+  object-fit: fill;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px 0 0 10px;
+}
+
+.mat-card-actions,
+.mat-card-subtitle,
+.mat-card-content {
+  margin-bottom: 20px;
+}
+
+.delete-icon {
+  color: black;
+}
+
+.delete-icon:hover {
+  color: red;
+}
+

@@ -13,6 +13,7 @@ export class RecipeEditComponent implements OnInit {
   id: number;
   editMode = false;
   recipeForm: FormGroup;
+  defaultImage: string = "https://parade.com/wp-content/uploads/2020/06/iStock-1203599963.jpg";
 
   constructor(private route: ActivatedRoute,
     private recipeService: RecipeService,
@@ -20,6 +21,7 @@ export class RecipeEditComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    console.log("edit")
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
@@ -27,6 +29,7 @@ export class RecipeEditComponent implements OnInit {
         this.initForm();
       }
     )
+    this.onAddIngredient();
   }
 
   onSubmit() {
@@ -90,5 +93,22 @@ export class RecipeEditComponent implements OnInit {
 
   onDeleteIngredient(index: number) {
     (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
+  }
+
+  isImageValid(url):boolean {
+    var request = new XMLHttpRequest();
+    var status: number;
+    request.open("GET", url, true);
+    request.send();
+    request.onload = function() {
+      status = request.status;
+      if (request.status == 200) //if(statusText == OK)
+      {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    return false;
   }
 }
