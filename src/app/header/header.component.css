@@ -1,26 +1,37 @@
-.navbar{
-  background-color: #3F51B5;
+.navbar {
+  background-color: #3f51b5;
 }
 
-a{
+a {
   color: white;
 }
 
 ul.nav a:hover,
 ul.nav a:focus,
-.nav .open>a,
+.nav .open > a,
 .active {
-  background-color: #252F69!important;
+  background-color: #252f69 !important;
   color: white;
   border-radius: 10px;
 }
 
-.navbar-brand{
+.navbar-brand {
   padding: 0px 15px;
   height: 54px;
   line-height: 54px;
 }
 
-.navbar-right{
+.navbar-right {
   margin-right: 0;
+}
+
+.navbar-nav {
+  margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav > li > a {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
 }

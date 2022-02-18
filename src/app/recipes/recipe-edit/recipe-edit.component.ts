@@ -13,7 +13,7 @@ export class RecipeEditComponent implements OnInit {
   id: number;
   editMode = false;
   recipeForm: FormGroup;
-  private defaultImage: string = "https://parade.com/wp-content/uploads/2020/06/iStock-1203599963.jpg";
+  defaultImage: string = "https://parade.com/wp-content/uploads/2020/06/iStock-1203599963.jpg";
 
   constructor(private route: ActivatedRoute,
     private recipeService: RecipeService,
