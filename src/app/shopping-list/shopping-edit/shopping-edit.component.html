@@ -1,25 +1,37 @@
 <div class="row">
-    <div class="col-xs-12">
-        <form (ngSubmit)="onAddItem(f)" #f="ngForm">
-            <div class="row">
-                <div class="col-sm-5 form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" class="form-control" name="name" ngModel required>
-                </div>
-                <div class="col-sm-2 form-group">
-                    <label for="amount">Amount</label>
-                    <input type="number" id="amount" class="form-control" name="amount" ngModel required
-                        pattern="^[1-9]+[0-9]*$">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <button class="btn btn-success" type="submit" [disabled]="!f.valid"> {{editMode ? 'Update' :
-                        'Add'}}</button>
-                    <button class="btn btn-danger" type="button" (click)="onDelete()" *ngIf="editMode">Delete</button>
-                    <button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
-                </div>
-            </div>
-        </form>
+  <form (ngSubmit)="onAddItem(f)" #f="ngForm">
+    <div style="margin-top: 30px;" align="center">
+      <div align="center" style="width: 100%; margin-top: 30px;">
+        <mat-form-field appearance="outline" style="width: 50%; max-width: 300px; margin-right: 50px;">
+          <mat-label>Ingredient Name</mat-label>
+          <input matInput placeholder="Ingredient Name" name="name" ngModel required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 40%; max-width: 150px; margin-right: 25px;">
+          <mat-label>Quantity</mat-label>
+          <input type="number" matInput placeholder="Amount" name="amount" ngModel required>
+        </mat-form-field>
+
+        <button class="btn btn-success" type="submit" [disabled]="!f.valid" style="
+             font-size: 18px;
+                padding:5px;
+                border-radius: 10px;
+                width:70px;
+                height: 32px;
+                font-weight: 500;
+                vertical-align: inherit;
+                margin-right: 10px;
+          "> {{editMode ? 'Update' :
+          'Add'}}</button>
+        <button class="btn btn-primary" type="button" (click)="onClear()" style="
+          font-size: 18px;
+             padding:5px;
+             border-radius: 10px;
+             width:70px;
+             height: 32px;
+             font-weight: 500;
+             vertical-align: inherit;
+       ">Clear</button>
+      </div>
     </div>
+  </form>
 </div>
