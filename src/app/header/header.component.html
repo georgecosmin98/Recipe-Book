@@ -9,7 +9,7 @@
     </div>
     <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="true">
       <ul class="nav navbar-nav">
-        <li routerLinkActive="active">
+        <li routerLinkActive="active" style="margin-right: 5px;">
           <a routerLink="/recipes" *ngIf="isAuthenticated">
             <span><mat-icon aria-hidden="false">restaurant_menu</mat-icon></span>
             Recipes</a>

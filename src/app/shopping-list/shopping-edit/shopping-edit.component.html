@@ -1,5 +1,5 @@
-<div class="row">
-    <div class="col-xs-12">
+<!-- <div class="row"> -->
+<!-- <div class="col-xs-12">
         <form (ngSubmit)="onAddItem(f)" #f="ngForm">
             <div class="row">
                 <div class="col-sm-5 form-group">
@@ -21,5 +21,115 @@
                 </div>
             </div>
         </form>
+    </div> -->
+<!-- </div> -->
+
+<div class="row">
+  <form (ngSubmit)="onAddItem(f)" #f="ngForm">
+    <div style="margin-top: 30px;" align="center">
+      <!-- <mat-card style="max-width: 900px;"> -->
+        <div align="center" style="width: 100%; margin-top: 30px;">
+          <mat-form-field appearance="outline"
+            style="width: 50%; max-width: 300px; margin-right: 50px;">
+            <mat-label>Ingredient Name</mat-label>
+            <input matInput placeholder="Ingredient Name" name="name" ngModel required>
+          </mat-form-field>
+          <mat-form-field appearance="outline" style="width: 40%; max-width: 150px; margin-right: 25px;">
+            <mat-label>Quantity</mat-label>
+            <input type="number" matInput placeholder="Amount" name="amount" ngModel required>
+          </mat-form-field>
+
+          <button class="btn btn-success" type="submit" [disabled]="!f.valid"
+          style="
+             font-size: 18px;
+                padding:5px;
+                border-radius: 10px;
+                width:70px;
+                height: 32px;
+                font-weight: 500;
+                vertical-align: inherit;
+                margin-right: 10px;
+          "
+          > {{editMode ? 'Update' :
+            'Add'}}</button>
+          <button class="btn btn-primary" type="button" (click)="onClear()"
+          style="
+          font-size: 18px;
+             padding:5px;
+             border-radius: 10px;
+             width:70px;
+             height: 32px;
+             font-weight: 500;
+             vertical-align: inherit;
+       "
+          >Clear</button>
+        </div>
+        <!-- <div align="center" style="width: 100%;">
+          <mat-form-field appearance="outline" style="width: 100%; max-width: 500px;">
+            <mat-label>Image URL</mat-label>
+            <input matInput placeholder="Image URL" id="imagePath" formControlName="imagePath" #imagePath>
+          </mat-form-field>
+        </div>
+        <div align="center" style="width: 100%;">
+          <mat-form-field appearance="outline" style="width: 100%; max-width: 500px;">
+            <mat-label>Description</mat-label>
+            <input matInput placeholder="Description" id="description" formControlName="description">
+          </mat-form-field>
+        </div>
+        <div align="center" style="width: 100%;">
+          <div class="col-xs-12" formArrayName="ingredients"> -->
+        <!-- <div class="row" [formGroupName]="i" *ngFor="let ingredientCtrl of controls; let i = index"
+              style="margin-top: 10px;">
+              <div *ngIf="i===0">
+                <mat-form-field appearance="outline"
+                  style="width: 50%; max-width: 300px; margin-right: 50px; margin-left: 63px">
+                  <mat-label>Ingredient Name</mat-label>
+                  <input matInput placeholder="Ingredient Name" id="name" formControlName="name">
+                </mat-form-field>
+                <mat-form-field appearance="outline" style="width: 40%; max-width: 150px; margin-right: 25px;">
+                  <mat-label>Quantity</mat-label>
+                  <input type="number" matInput placeholder="Amount" id="amount" formControlName="amount">
+                </mat-form-field>
+                <button type="button" class="btn btn-success" (click)="onAddIngredient()" style="
+              font-size: 32px;
+              padding:5px;
+              line-height: 18px;
+              border-radius: 10px;
+              width:38px;
+              height: 32px;
+              vertical-align: sub;
+              ">+</button>
+              </div>
+              <div *ngIf="i !== controls.length && i>0">
+                <mat-form-field appearance="outline"
+                  style="width: 50%; max-width: 300px; margin-right: 50px; margin-left: 63px">
+                  <mat-label>Ingredient Name</mat-label>
+                  <input matInput placeholder="Ingredient Name" id="name" formControlName="name">
+                </mat-form-field>
+                <mat-form-field appearance="outline" style="width: 40%; max-width: 150px; margin-right: 25px;">
+                  <mat-label>Quantity</mat-label>
+                  <input type="number" matInput placeholder="Amount" id="amount" formControlName="amount">
+                </mat-form-field>
+                <button type="button" class="btn btn-danger" (click)="onDeleteIngredient(i)" style="
+                font-size: 18px;
+                padding:5px;
+                border-radius: 10px;
+                width:38px;
+                height: 32px;
+                font-weight: 500;
+                vertical-align: inherit;">X</button>
+              </div>
+            </div> -->
+        <!-- </div>
+        </div> -->
+
+        <!-- <div align="center" style="width: 100%;">
+          <button type="button" class="btn btn-danger" style="margin-right:50px; border-radius: 10px;"
+            (click)="onCancel()">Cancel</button>
+          <button type="submit" class="btn btn-success" style="border-radius: 10px;"
+            [disabled]="!recipeForm.valid">Save</button>
+        </div> -->
+      <!-- </mat-card> -->
     </div>
+  </form>
 </div>
