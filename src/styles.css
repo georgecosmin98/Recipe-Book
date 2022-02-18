@@ -6,7 +6,7 @@ html, body { height: 100%;
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow-x: hidden; }
 
 .mat-icon{
-  vertical-align: bottom;
+  vertical-align: sub;
 }
 
 html, body { height: 100%; }
