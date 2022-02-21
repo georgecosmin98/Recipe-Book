@@ -5,19 +5,19 @@
     <span>
       <mat-icon aria-hidden="false">restaurant_menu</mat-icon>
     </span>
-    Recipes</a>
+    <span class="page-title">Recipes</span></a>
   <a routerLink="/shopping-list" routerLinkActive="active" class="navbar-link">
     <span>
       <mat-icon aria-hidden="false">reorder</mat-icon>
     </span>
-    Shopping List</a>
+    <span class="page-title">Shopping List</span></a>
   <span class="spacer"></span>
   <a routerLink="/auth" *ngIf="!isAuthenticated" routerLinkActive="active" class="navbar-link"><span>
       <mat-icon aria-hidden="false">login</mat-icon>
-    </span> Login</a>
+    </span> <span class="page-title">Login</span></a>
 
   <a style="cursor: pointer;" *ngIf="isAuthenticated" (click)="onLogout()" routerLinkActive="active" class="navbar-link"><span>
       <mat-icon aria-hidden="false">logout</mat-icon>
-    </span>Logout</a>
+    </span> <span class="page-title">Logout</span></a>
 
 </mat-toolbar>
