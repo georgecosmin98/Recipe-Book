@@ -1,0 +1,29 @@
+#recipe-list-row{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3%;
+}
+
+#recipe-list-col{
+  max-width: 420px;
+  min-width: 420px;
+}
+
+@media screen and (max-width: 768px) {
+  #recipe-list-row{
+    margin-left: 0;
+    margin-top: 3%;
+  }
+
+  #recipe-list-col{
+    margin-left:auto;
+    margin-right:auto;
+  }
+}
+
+/* @media screen and (max-width: 480px) {
+  #recipe-list-row{
+    margin-top: 3%;
+    margin-left: 0;
+  }
+} */

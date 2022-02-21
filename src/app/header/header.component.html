@@ -1,34 +1,23 @@
 <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center">
   <a routerLink="/" class="navbar-brand" style="font-size: 28px;">
     Recipe Book</a>
+  <a routerLink="/recipes" *ngIf="isAuthenticated" routerLinkActive="active" class="navbar-link" style="margin-right:5px">
+    <span>
+      <mat-icon aria-hidden="false">restaurant_menu</mat-icon>
+    </span>
+    Recipes</a>
+  <a routerLink="/shopping-list" routerLinkActive="active" class="navbar-link">
+    <span>
+      <mat-icon aria-hidden="false">reorder</mat-icon>
+    </span>
+    Shopping List</a>
+  <span class="spacer"></span>
+  <a routerLink="/auth" *ngIf="!isAuthenticated" routerLinkActive="active" class="navbar-link"><span>
+      <mat-icon aria-hidden="false">login</mat-icon>
+    </span> Login</a>
 
-  <ul class="nav navbar-nav">
-    <li routerLinkActive="active" style="margin-right:5px">
-      <a routerLink="/recipes" *ngIf="isAuthenticated">
-        <span>
-          <mat-icon aria-hidden="false">restaurant_menu</mat-icon>
-        </span>
-        Recipes</a>
-    </li>
-    <li routerLinkActive="active">
-      <a routerLink="/shopping-list">
-        <span>
-          <mat-icon aria-hidden="false">reorder</mat-icon>
-        </span>
-        Shopping List</a>
-    </li>
-  </ul>
-  <span class="example-spacer"></span>
-  <ul class="nav navbar-nav navbar-right">
-    <li routerLinkActive="active">
-      <a routerLink="/auth" *ngIf="!isAuthenticated"><span>
-          <mat-icon aria-hidden="false">login</mat-icon>
-        </span> Login</a>
-    </li>
-    <li>
-      <a style="cursor: pointer;" *ngIf="isAuthenticated" (click)="onLogout()"><span>
-          <mat-icon aria-hidden="false">logout</mat-icon>
-        </span>Logout</a>
-    </li>
-  </ul>
+  <a style="cursor: pointer;" *ngIf="isAuthenticated" (click)="onLogout()" routerLinkActive="active" class="navbar-link"><span>
+      <mat-icon aria-hidden="false">logout</mat-icon>
+    </span>Logout</a>
+
 </mat-toolbar>

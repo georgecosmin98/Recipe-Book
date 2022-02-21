@@ -1,27 +1,27 @@
 <div class="container-fluid" style="height: 92vh; background-color: #E5E5E5; margin-left: 15px;">
   <div class="row">
-    <div class="col-xs-12" style="padding-right: 0; padding-left: 0;">
+    <div class="col-12" style="padding-right: 0; padding-left: 0;">
       <img [src]="recipe.imagePath" alt=" {{ recipe.name }}" style="max-height: 250px; width:100%; object-fit:cover;">
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12" style="text-align: center; margin-top: 15px;">
+    <div class="col-12" style="text-align: center; margin-top: 15px;">
       <h1 style="font-size: 36px; font-weight: 500;">{{ recipe.name }}</h1>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12" style="text-align: center;">
+    <div class="col-12" style="text-align: center;">
       {{ recipe.description }}
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12" style="text-align: left;">
+    <div class="col-12" style="text-align: left;">
       <h1 style="font-size: 28px; font-weight: 500; margin-left: 30px;  margin-top: 20px;">Ingredients</h1>
     </div>
   </div>
 
   <div class="row" style="margin-left:10%; margin-right: 10%; margin-top: 20px;">
-    <div class="col-xs-12">
+    <div class="col-12">
       <ul class="list-group">
         <li class="list-group-item" *ngFor="let ingredient of recipe.ingredients">
           {{ ingredient.name }} - {{ ingredient.amount}}

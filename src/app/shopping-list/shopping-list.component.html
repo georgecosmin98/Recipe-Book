@@ -1,12 +1,12 @@
-<div class="row" align="center">
-  <mat-card style="max-width: 900px; margin-top: 5%;">
+<div class="row justify-content-center">
+  <mat-card style="max-width: 900px; margin-top: 5%; width:900px">
     <app-shopping-edit></app-shopping-edit>
     <hr>
 
-    <div style="width:78%">
+    <div class="row justify-content-center" style="max-width: 900px; width:900px" >
       <ul class="list-group" align="left">
         <li class="list-group-item" *ngFor="let ingredient of ingredients; let i = index">
-          <div class="row">
+          <div class="row" style="justify-content: left; min-width: 665px">
             <p style="margin:0; line-height: 32px; cursor: pointer; padding-left:10.5px" (click)="onEditItem(i)">{{ ingredient.name }} - {{
               ingredient.amount}}
             </p>

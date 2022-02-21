@@ -1,23 +1,26 @@
-<mat-card style="height: 100px; padding:0; margin-bottom: 10px; border-radius: 10px;">
+<mat-card class= "recipe-card">
   <div>
-    <div class="row" style="height: 100px;">
-      <div class="col-md-3" style="cursor: pointer;" [routerLink]="[index]">
+    <div class="row flex-nowrap" style="height: 100px;">
+      <div class="col-3" style="cursor: pointer;">
         <img src={{recipe.imagePath}}>
       </div>
-      <div class="col-md-9" style="margin-top: 10px;" style="cursor: pointer;" [routerLink]="[index]">
+      <div class="col-9" style="margin-top: 10px;" style="cursor: pointer;">
+        <div [routerLink]="[index]">
         <mat-card-content>
           <mat-card-title style="margin-left: 8px; font-size: 20px;">{{recipe.name}}
               <a style="float:right; margin-right:3%" (click)="  onDeleteRecipe()">
                 <mat-icon aria-hidden="false" class="delete-icon">delete</mat-icon>
               </a>
           </mat-card-title>
-          <mat-card-subtitle style="margin-left: 8px; font-size: 14px;">{{recipe.description}}</mat-card-subtitle>
+          <mat-card-subtitle style="margin-left: 8px; font-size: 14px; overflow: hidden;
+          text-overflow: ellipsis;  white-space: nowrap;">{{recipe.description}}</mat-card-subtitle>
         </mat-card-content>
       </div>
-      <mat-card-actions align="center" style="margin-top: 5px;">
-        <button mat-button (click)="onAddToShoppingList()">TO SHOPPING LIST</button>
-        <button mat-button (click)="onEditRecipe()">EDIT</button>
-      </mat-card-actions>
+        <mat-card-actions align="center" style="margin-bottom: 5px; padding:0;">
+          <button mat-button (click)="onAddToShoppingList()">TO SHOPPING LIST</button>
+          <button mat-button (click)="onEditRecipe()">EDIT</button>
+        </mat-card-actions>
+      </div>
     </div>
   </div>
 </mat-card>

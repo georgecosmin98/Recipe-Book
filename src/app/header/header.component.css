@@ -1,14 +1,11 @@
-.navbar {
-  background-color: #3f51b5;
-}
-
 a {
   color: white;
+  padding: 5px 10px;
 }
 
-ul.nav a:hover,
-ul.nav a:focus,
-.nav .open > a,
+a:hover.navbar-link,
+a:focus.navbar-link ,
+.navbar-link > a,
 .active {
   background-color: #252f69 !important;
   color: white;
@@ -27,6 +24,6 @@ ul.nav a:focus,
   }
 }
 
-.example-spacer {
+.spacer {
   flex: 1 1 auto;
 }

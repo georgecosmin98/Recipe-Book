@@ -1,9 +1,9 @@
 <div class="container-fluid"
   style="min-height: 92vh; background-color: #E5E5E5; margin-left: 15px; padding-bottom: 15px;">
   <div class="row">
-    <div class="col-xs-12" style="padding-right: 0; padding-left: 0;">
+    <div class="col-12" style="padding-right: 0; padding-left: 0;">
       <img [src]="imagePath.value.length>0 ? imagePath.value: defaultImage"
-        alt=" {{ imagePath.value.length>0 ? imagePath.value: defaultImage }}"
+        alt=" img"
         style="max-height: 250px; width:100%; object-fit:cover;">
     </div>
   </div>
@@ -29,7 +29,7 @@
           </mat-form-field>
         </div>
         <div align="center" style="width: 100%;">
-          <div class="col-xs-12" formArrayName="ingredients">
+          <div class="col-12" formArrayName="ingredients">
             <div class="row" [formGroupName]="i" *ngFor="let ingredientCtrl of controls; let i = index"
               style="margin-top: 10px;">
               <div *ngIf="i===0">

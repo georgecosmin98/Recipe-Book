@@ -19,3 +19,34 @@ img {
   color: red;
 }
 
+.recipe-card {
+  height: 100px;
+  padding: 0;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.recipe-list{
+  min-width: 420px;
+  max-width: 420px;
+
+}
+
+#recipe-list-id{
+  margin-left: 10%!important;
+  margin-top: 7%;
+}
+
+@media screen and (max-width: 768px) {
+  .recipe-card {
+    height: 100px;
+    padding: 0;
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+
+  .recipe-list{
+    min-width: 380px;
+    max-width: 420px;
+  }
+}
