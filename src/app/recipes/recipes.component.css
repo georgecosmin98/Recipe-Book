@@ -5,25 +5,50 @@
 }
 
 #recipe-list-col{
+  margin-top: 30px;
+  margin-left: 4%;
+  margin-right: 4%;
   max-width: 420px;
   min-width: 420px;
+  margin-bottom: 0;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
   #recipe-list-row{
     margin-left: 0;
     margin-top: 3%;
   }
 
   #recipe-list-col{
+    margin-top:30px;
     margin-left:auto!important;
     margin-right:auto!important;
+    margin-bottom: 30px;
   }
 }
 
-/* @media screen and (max-width: 480px) {
-  #recipe-list-row{
-    margin-top: 3%;
-    margin-left: 0;
+@media screen and (max-width: 1500px) {
+
+  #recipe-list-col{
+    margin-left: 5%;
+    margin-right: 5%;
   }
-} */
+}
+
+@media screen and (min-width: 1500px) {
+  #recipe-list-row{
+    margin-left: 0;
+    margin-top: 3%;
+  }
+
+  #recipe-list-col{
+    margin-left: 7%;
+    margin-right: 7%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #recipes-container-wrapper{
+    flex-direction: column;
+  }
+}
