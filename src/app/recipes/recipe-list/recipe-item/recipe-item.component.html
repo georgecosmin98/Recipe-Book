@@ -1,7 +1,7 @@
 <mat-card class= "recipe-card">
   <div>
     <div class="row flex-nowrap" style="height: 100px;">
-      <div class="col-3" style="cursor: pointer;">
+      <div class="col-3" style="cursor: pointer;" [routerLink]="[index]">
         <img src={{recipe.imagePath}}>
       </div>
       <div class="col-9" style="margin-top: 10px;" style="cursor: pointer;">
