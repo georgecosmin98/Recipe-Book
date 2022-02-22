@@ -20,7 +20,6 @@ export class RecipeItemComponent implements OnInit {
   ngOnInit(): void {}
 
   onEditRecipe() {
-    console.log("Hehe")
     this.linkEnabled = false;
     this.router.navigate([this.index, 'edit'], { relativeTo: this.route });
   }

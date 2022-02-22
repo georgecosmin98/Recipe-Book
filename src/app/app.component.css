@@ -1,7 +1,11 @@
 @media screen and (max-width: 900px) {
 
   .container-fluid{
-   padding-left: 0;
-   padding-right: 0;
+   /* padding-left: 0;
+   padding-right: 0; */
+  }
+
+  #recipe-background-mobile{
+    background-color: #E5E5E5;
   }
 }

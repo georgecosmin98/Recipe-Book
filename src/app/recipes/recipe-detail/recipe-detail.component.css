@@ -17,4 +17,8 @@
   #recipe-detail-container{
     margin-left: 0;
   }
+
+  #recipe-background-mobile{
+    background-color: #E5E5E5;
+  }
 }

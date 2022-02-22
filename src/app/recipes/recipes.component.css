@@ -48,7 +48,20 @@
 }
 
 @media screen and (max-width: 900px) {
-  #recipes-container-wrapper{
-    flex-direction: column;
+
+  .container-fluid{
+   /* padding-left: 0;
+   padding-right: 0; */
+  }
+
+  #recipe-background-mobile{
+    background-color: #E5E5E5;
   }
 }
+
+
+/* @media screen and (max-width: 900px) { */
+  /* #recipes-container-wrapper{
+    flex-direction: column;
+  } */
+/* } */

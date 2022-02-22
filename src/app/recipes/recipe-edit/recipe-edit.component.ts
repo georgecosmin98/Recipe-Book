@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { delay } from 'rxjs';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { RecipeService } from '../recipe.service';
 
@@ -9,7 +10,7 @@ import { RecipeService } from '../recipe.service';
   templateUrl: './recipe-edit.component.html',
   styleUrls: ['./recipe-edit.component.css']
 })
-export class RecipeEditComponent implements OnInit {
+export class RecipeEditComponent implements OnInit,AfterViewChecked,AfterViewInit {
   id: number;
   editMode = false;
   recipeForm: FormGroup;
@@ -18,10 +19,13 @@ export class RecipeEditComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private recipeService: RecipeService,
     private dataStorageService: DataStorageService,
-    private router: Router) { }
+    private router: Router,
+    private cdRef:ChangeDetectorRef) { }
 
-  ngOnInit(): void {
-    console.log("edit")
+  ngAfterViewInit(): void {
+  }
+
+  ngAfterViewChecked(): void {
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
@@ -30,6 +34,15 @@ export class RecipeEditComponent implements OnInit {
       }
     )
     this.onAddIngredient();
+    this.cdRef.detectChanges();
+  }
+
+  ngOnInit(): void {
+    this.recipeForm = new FormGroup({
+      'name': new FormControl("", Validators.required),
+      'imagePath': new FormControl(this.defaultImage, Validators.required),
+      'description': new FormControl("", Validators.required),
+      'ingredients': new FormArray([])})
   }
 
   onSubmit() {
@@ -72,6 +85,7 @@ export class RecipeEditComponent implements OnInit {
       'description': new FormControl(recipeDescription, Validators.required),
       'ingredients': recipeIngredients
     })
+    this.cdRef.detectChanges();
   }
 
   onAddIngredient() {
