@@ -1,0 +1,24 @@
+#recipe-detail-container{
+  margin-left: 15px;
+}
+
+@media screen and (max-width: 900px) {
+  .container-fluid{
+    padding-right: 0;
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  #recipe-detail-container.col-12{
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #recipe-detail-container{
+    margin-left: 0;
+  }
+
+  #recipe-background-mobile{
+    background-color: #E5E5E5;
+  }
+}
