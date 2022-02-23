@@ -1,7 +1,8 @@
-<div class="row justify-content-center flex-nowrap flex-column">
+<div class="justify-content-center flex-nowrap flex-column">
   <form (ngSubmit)="onAddItem(f)" #f="ngForm">
     <div style="margin-top: 30px; ">
-      <div align="center" style="width: 100%; margin-top: 30px;">
+      <div class="container">
+      <div class="row justify-content-center" align="center" style="width: 100%; margin-top: 30px; margin-left:0; align-items: baseline;">
         <mat-form-field appearance="outline" style="width: 50%; max-width: 300px; margin-right: 50px;">
           <mat-label>Ingredient Name</mat-label>
           <input matInput placeholder="Ingredient Name" name="name" ngModel required>
@@ -11,7 +12,8 @@
           <input type="number" matInput placeholder="Amount" name="amount" ngModel required>
         </mat-form-field>
 
-        <button class="btn btn-success" type="submit" [disabled]="!f.valid" style="
+        <div>
+          <button class="btn btn-success" type="submit" [disabled]="!f.valid" style="
              font-size: 18px;
                 padding:5px;
                 border-radius: 10px;
@@ -21,8 +23,8 @@
                 vertical-align: inherit;
                 margin-right: 10px;
           "> {{editMode ? 'Update' :
-          'Add'}}</button>
-        <button class="btn btn-primary" type="button" (click)="onClear()" style="
+            'Add'}}</button>
+          <button class="btn btn-primary" type="button" (click)="onClear()" style="
           font-size: 18px;
              padding:5px;
              border-radius: 10px;
@@ -31,6 +33,8 @@
              font-weight: 500;
              vertical-align: inherit;
        ">Clear</button>
+        </div>
+      </div>
       </div>
     </div>
   </form>

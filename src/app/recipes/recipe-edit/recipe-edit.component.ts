@@ -1,4 +1,13 @@
-import { AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  AfterContentInit,
+  AfterViewChecked,
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { delay } from 'rxjs';
@@ -8,49 +17,61 @@ import { RecipeService } from '../recipe.service';
 @Component({
   selector: 'app-recipe-edit',
   templateUrl: './recipe-edit.component.html',
-  styleUrls: ['./recipe-edit.component.css']
+  styleUrls: ['./recipe-edit.component.css'],
 })
-export class RecipeEditComponent implements OnInit,AfterViewChecked,AfterViewInit {
+export class RecipeEditComponent
+  implements OnInit, AfterViewChecked, AfterViewInit
+{
   id: number;
   editMode = false;
   recipeForm: FormGroup;
-  defaultImage: string = "https://parade.com/wp-content/uploads/2020/06/iStock-1203599963.jpg";
+  defaultImage: string =
+    'https://parade.com/wp-content/uploads/2020/06/iStock-1203599963.jpg';
 
-  constructor(private route: ActivatedRoute,
+  constructor(
+    private route: ActivatedRoute,
     private recipeService: RecipeService,
     private dataStorageService: DataStorageService,
     private router: Router,
-    private cdRef:ChangeDetectorRef) { }
+    private cdRef: ChangeDetectorRef
+  ) {}
 
-  ngAfterViewInit(): void {
-  }
+  ngAfterViewInit(): void {}
 
   ngAfterViewChecked(): void {
-    this.route.params.subscribe(
-      (params: Params) => {
-        this.id = +params['id'];
-        this.editMode = params['id'] != null;
-        this.initForm();
-      }
-    )
-    this.onAddIngredient();
-    this.cdRef.detectChanges();
+    // console.log('check');
+    // this.route.params.subscribe(
+    //   (params: Params) => {
+    //     this.id = +params['id'];
+    //     this.editMode = params['id'] != null;
+    //     this.initForm();
+    //   }
+    // )
+    // this.onAddIngredient();
+    // this.cdRef.detectChanges();
   }
 
   ngOnInit(): void {
-    this.recipeForm = new FormGroup({
-      'name': new FormControl("", Validators.required),
-      'imagePath': new FormControl(this.defaultImage, Validators.required),
-      'description': new FormControl("", Validators.required),
-      'ingredients': new FormArray([])})
+    console.log('check');
+    // this.recipeForm = new FormGroup({
+    //   'name': new FormControl("", Validators.required),
+    //   'imagePath': new FormControl(this.defaultImage, Validators.required),
+    //   'description': new FormControl("", Validators.required),
+    //   'ingredients': new FormArray([])})
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params['id'];
+      this.editMode = params['id'] != null;
+      this.initForm();
+    });
+    this.onAddIngredient();
+    this.cdRef.detectChanges();
   }
 
   onSubmit() {
     if (this.editMode) {
       this.recipeService.updateRecipe(this.id, this.recipeForm.value);
       this.dataStorageService.storeRecipes();
-    }
-    else {
+    } else {
       this.recipeService.addRecipe(this.recipeForm.value);
       this.dataStorageService.storeRecipes();
     }
@@ -59,45 +80,53 @@ export class RecipeEditComponent implements OnInit,AfterViewChecked,AfterViewIni
 
   private initForm() {
     let recipeName = '';
-    let recipeImagePath = '';
+    let recipeImagePath = this.defaultImage;
     let recipeDescription = '';
     let recipeIngredients = new FormArray([]);
 
     if (this.editMode) {
       const recipe = this.recipeService.getRecipesById(this.id);
       recipeName = recipe.name;
+      console.log(recipe.imagePath)
       recipeImagePath = recipe.imagePath;
       recipeDescription = recipe.description;
       if (recipe['ingredients']) {
         for (let ingredinet of recipe['ingredients'])
           recipeIngredients.push(
             new FormGroup({
-              'name': new FormControl(ingredinet.name, Validators.required),
-              'amount': new FormControl(ingredinet.amount, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)])
+              name: new FormControl(ingredinet.name, Validators.required),
+              amount: new FormControl(ingredinet.amount, [
+                Validators.required,
+                Validators.pattern(/^[1-9]+[0-9]*$/),
+              ]),
             })
           );
       }
     }
-
+    console.log(this.recipeForm)
     this.recipeForm = new FormGroup({
-      'name': new FormControl(recipeName, Validators.required),
-      'imagePath': new FormControl(recipeImagePath, Validators.required),
-      'description': new FormControl(recipeDescription, Validators.required),
-      'ingredients': recipeIngredients
-    })
+      name: new FormControl(recipeName, Validators.required),
+      imagePath: new FormControl(recipeImagePath, Validators.required),
+      description: new FormControl(recipeDescription, Validators.required),
+      ingredients: recipeIngredients,
+    });
     this.cdRef.detectChanges();
   }
 
   onAddIngredient() {
     (<FormArray>this.recipeForm.get('ingredients')).push(
       new FormGroup({
-        'name': new FormControl(null, Validators.required),
-        'amount': new FormControl(null, [Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)])
+        name: new FormControl(null, Validators.required),
+        amount: new FormControl(null, [
+          Validators.required,
+          Validators.pattern(/^[1-9]+[0-9]*$/),
+        ]),
       })
-    )
+    );
   }
 
-  get controls() { // a getter!
+  get controls() {
+    // a getter!
     return (<FormArray>this.recipeForm.get('ingredients')).controls;
   }
 
@@ -106,23 +135,24 @@ export class RecipeEditComponent implements OnInit,AfterViewChecked,AfterViewIni
   }
 
   onDeleteIngredient(index: number) {
+    console.log('delete');
     (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
   }
 
-  isImageValid(url):boolean {
+  isImageValid(url): boolean {
     var request = new XMLHttpRequest();
     var status: number;
-    request.open("GET", url, true);
+    request.open('GET', url, true);
     request.send();
-    request.onload = function() {
+    request.onload = function () {
       status = request.status;
-      if (request.status == 200) //if(statusText == OK)
-      {
+      if (request.status == 200) {
+        //if(statusText == OK)
         return true;
       } else {
         return false;
       }
-    }
+    };
     return false;
   }
 }
