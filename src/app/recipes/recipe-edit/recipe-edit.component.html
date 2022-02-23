@@ -2,8 +2,7 @@
   style="min-height: 92vh; background-color: #E5E5E5; padding-bottom: 15px;">
   <div class="row">
     <div class="col-12" style="padding-right: 0; padding-left: 0;">
-      <img [src]="imagePath.value"
-        alt=" img"
+      <img [src]="imagePath.value.length>0 ? imagePath.value : defaultImage" alt=" img"
         style="max-height: 250px; width:100%; object-fit:cover;">
     </div>
   </div>

@@ -1,16 +1,6 @@
-import {
-  AfterContentInit,
-  AfterViewChecked,
-  AfterViewInit,
-  ChangeDetectorRef,
-  Component,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { delay } from 'rxjs';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { RecipeService } from '../recipe.service';
 
@@ -19,9 +9,7 @@ import { RecipeService } from '../recipe.service';
   templateUrl: './recipe-edit.component.html',
   styleUrls: ['./recipe-edit.component.css'],
 })
-export class RecipeEditComponent
-  implements OnInit, AfterViewChecked, AfterViewInit
-{
+export class RecipeEditComponent implements OnInit {
   id: number;
   editMode = false;
   recipeForm: FormGroup;
@@ -36,28 +24,8 @@ export class RecipeEditComponent
     private cdRef: ChangeDetectorRef
   ) {}
 
-  ngAfterViewInit(): void {}
-
-  ngAfterViewChecked(): void {
-    // console.log('check');
-    // this.route.params.subscribe(
-    //   (params: Params) => {
-    //     this.id = +params['id'];
-    //     this.editMode = params['id'] != null;
-    //     this.initForm();
-    //   }
-    // )
-    // this.onAddIngredient();
-    // this.cdRef.detectChanges();
-  }
-
   ngOnInit(): void {
     console.log('check');
-    // this.recipeForm = new FormGroup({
-    //   'name': new FormControl("", Validators.required),
-    //   'imagePath': new FormControl(this.defaultImage, Validators.required),
-    //   'description': new FormControl("", Validators.required),
-    //   'ingredients': new FormArray([])})
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       this.editMode = params['id'] != null;
@@ -80,14 +48,14 @@ export class RecipeEditComponent
 
   private initForm() {
     let recipeName = '';
-    let recipeImagePath = this.defaultImage;
+    let recipeImagePath = '';
     let recipeDescription = '';
     let recipeIngredients = new FormArray([]);
 
     if (this.editMode) {
       const recipe = this.recipeService.getRecipesById(this.id);
       recipeName = recipe.name;
-      console.log(recipe.imagePath)
+      console.log(recipe.imagePath);
       recipeImagePath = recipe.imagePath;
       recipeDescription = recipe.description;
       if (recipe['ingredients']) {
@@ -103,7 +71,7 @@ export class RecipeEditComponent
           );
       }
     }
-    console.log(this.recipeForm)
+    console.log(this.recipeForm);
     this.recipeForm = new FormGroup({
       name: new FormControl(recipeName, Validators.required),
       imagePath: new FormControl(recipeImagePath, Validators.required),
