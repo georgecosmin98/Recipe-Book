@@ -23,6 +23,8 @@ export class RecipeDetailComponent implements OnInit {
       this.id = +params['id'];
       this.recipe = this.recipeService.getRecipesById(this.id);
     });
+
+    console.log(this.recipe)
   }
 
   onAddToShoppingList() {

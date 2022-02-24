@@ -1,5 +1,5 @@
 import { Component, ComponentFactoryResolver, OnDestroy, OnInit, ViewChild } from "@angular/core";
-import { NgForm } from "@angular/forms";
+import { FormGroup, NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Observable, Subscription } from "rxjs";
 import { AlertComponent } from "../shared/alert/alert.component";
@@ -31,6 +31,7 @@ export class AuthComponent implements OnDestroy,OnInit {
     }
 
     onSubmit(form: NgForm) {
+      console.log(form.status)
         if (!form.valid)
             return;
         const email = form.value.email;

@@ -14,6 +14,11 @@
             <mat-form-field appearance="outline">
               <mat-label>Email</mat-label>
               <input matInput placeholder="Email" ngModel name="email" required email>
+              <mat-error *ngIf="authForm.form.controls?.email?.errors?.email === true">Please enter a valid email
+                address!
+              </mat-error>
+              <mat-error *ngIf="authForm.form.controls?.email?.errors?.required === true">Email is required!
+              </mat-error>
               <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
               <!-- <mat-hint>Hint</mat-hint> -->
             </mat-form-field>
@@ -22,17 +27,23 @@
           <div style="margin-bottom: 25px;">
             <mat-form-field appearance="outline">
               <mat-label>Password</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" ngModel name="password" required
-                    minlength="6">
-              <button type="button"  matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                [attr.aria-pressed]="hide" style="background-color: white; border: none; box-shadow: none; max-width: 30px;">
+              <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" ngModel name="password"
+                required minlength="6">
+              <mat-error *ngIf="!authForm.form.controls?.password?.errors?.minlength === false">Please provide a password that contain more than 6 characters!
+              </mat-error>
+              <mat-error *ngIf="authForm.form.controls?.password?.errors?.required === true">Passowrd is required!
+              </mat-error>
+              <button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+                style="background-color: white; border: none; box-shadow: none; max-width: 30px;">
                 <mat-icon matSuffix style="width:32px">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
             </mat-form-field>
           </div>
 
           <div style="margin-bottom: 25px;">
-            <button class="btn btn-primary" type="submit">{{isLoginMode ? 'Sign In' :
+            <button class="btn btn-primary" type="submit" [disabled]="authForm.form.status === 'INVALID'">{{isLoginMode
+              ? 'Sign In' :
               'Sign Up'}}</button>
           </div>
 

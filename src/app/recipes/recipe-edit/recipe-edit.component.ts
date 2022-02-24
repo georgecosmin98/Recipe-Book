@@ -115,7 +115,6 @@ export class RecipeEditComponent implements OnInit {
     request.onload = function () {
       status = request.status;
       if (request.status == 200) {
-        //if(statusText == OK)
         return true;
       } else {
         return false;
