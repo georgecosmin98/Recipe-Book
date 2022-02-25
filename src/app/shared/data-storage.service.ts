@@ -17,6 +17,24 @@ export class DataStorageService {
         });
     }
 
+    addRecipe(recipe: Recipe){
+        this.http.put('http://localhost:8080/recipes', recipe).subscribe(response => {
+            console.log(response);
+        });
+    }
+
+    updateRecipe(recipe: Recipe, idRecipe: number){
+      this.http.patch(`http://localhost:8080/recipes/update/${idRecipe}`, recipe).subscribe(response => {
+          console.log(response);
+      });
+  }
+
+    deleteRecipe(idRecipe : number){
+      this.http.delete(`http://localhost:8080/recipes/${idRecipe}`).subscribe(response => {
+          console.log(response);
+      });
+  }
+
     fetchRecipes() {
         return this.http.get<Recipe[]>('http://localhost:8080/recipes')
             .pipe(

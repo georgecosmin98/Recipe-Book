@@ -1,4 +1,9 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {
+  AfterContentChecked,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
@@ -9,12 +14,13 @@ import { RecipeService } from '../recipe.service';
   templateUrl: './recipe-edit.component.html',
   styleUrls: ['./recipe-edit.component.css'],
 })
-export class RecipeEditComponent implements OnInit {
+export class RecipeEditComponent implements OnInit, AfterContentChecked {
   id: number;
   editMode = false;
   recipeForm: FormGroup;
   defaultImage: string =
     'https://parade.com/wp-content/uploads/2020/06/iStock-1203599963.jpg';
+  idRecipe: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,6 +30,10 @@ export class RecipeEditComponent implements OnInit {
     private cdRef: ChangeDetectorRef
   ) {}
 
+  ngAfterContentChecked(): void {
+    if (this.recipeForm.value.ingredients.length === 0) this.onAddIngredient();
+  }
+
   ngOnInit(): void {
     console.log('check');
     this.route.params.subscribe((params: Params) => {
@@ -31,17 +41,21 @@ export class RecipeEditComponent implements OnInit {
       this.editMode = params['id'] != null;
       this.initForm();
     });
-    this.onAddIngredient();
     this.cdRef.detectChanges();
   }
 
   onSubmit() {
+    console.log(this.recipeForm.value);
+    console.log(this.id);
     if (this.editMode) {
       this.recipeService.updateRecipe(this.id, this.recipeForm.value);
-      this.dataStorageService.storeRecipes();
+      this.dataStorageService.updateRecipe(
+        this.recipeForm.value,
+        this.idRecipe
+      );
     } else {
       this.recipeService.addRecipe(this.recipeForm.value);
-      this.dataStorageService.storeRecipes();
+      this.dataStorageService.addRecipe(this.recipeForm.value);
     }
     this.onCancel();
   }
@@ -54,6 +68,7 @@ export class RecipeEditComponent implements OnInit {
 
     if (this.editMode) {
       const recipe = this.recipeService.getRecipesById(this.id);
+      this.idRecipe = recipe.id;
       recipeName = recipe.name;
       console.log(recipe.imagePath);
       recipeImagePath = recipe.imagePath;
