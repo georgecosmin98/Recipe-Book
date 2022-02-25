@@ -6,10 +6,16 @@
         <mat-form-field appearance="outline" style="width: 50%; max-width: 300px; margin-right: 50px;">
           <mat-label>Ingredient Name</mat-label>
           <input matInput placeholder="Ingredient Name" name="name" ngModel required>
+          <mat-error *ngIf="f.controls?.name?.errors?.required">
+            Ingredient Name is required!
+          </mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline" style="width: 40%; max-width: 150px; margin-right: 25px;">
           <mat-label>Quantity</mat-label>
           <input type="number" matInput placeholder="Amount" name="amount" ngModel required>
+          <mat-error *ngIf="f.controls?.amount?.errors?.required">
+            Amount is required!
+          </mat-error>
         </mat-form-field>
 
         <div>
