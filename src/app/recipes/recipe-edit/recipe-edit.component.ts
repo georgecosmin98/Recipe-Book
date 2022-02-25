@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { take } from 'rxjs';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { RecipeService } from '../recipe.service';
 
@@ -56,6 +57,7 @@ export class RecipeEditComponent implements OnInit, AfterContentChecked {
     } else {
       this.recipeService.addRecipe(this.recipeForm.value);
       this.dataStorageService.addRecipe(this.recipeForm.value);
+      this.dataStorageService.fetchRecipes().pipe(take(1)).subscribe();
     }
     this.onCancel();
   }
