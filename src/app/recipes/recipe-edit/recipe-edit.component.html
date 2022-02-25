@@ -13,18 +13,24 @@
           <mat-form-field appearance="outline" style="width: 100%; max-width: 500px;">
             <mat-label>Recipe Name</mat-label>
             <input matInput placeholder="Recipe Name" id="name" formControlName="name">
+            <mat-error *ngIf="recipeForm.controls?.name?.errors?.required === true">Recipe Name is required!
+            </mat-error>
           </mat-form-field>
         </div>
         <div align="center" style="width: 100%;">
           <mat-form-field appearance="outline" style="width: 100%; max-width: 500px;">
             <mat-label>Image URL</mat-label>
             <input matInput placeholder="Image URL" id="imagePath" formControlName="imagePath" #imagePath>
+            <mat-error *ngIf="recipeForm.controls?.imagePath?.errors?.required === true">Image Path is required!
+            </mat-error>
           </mat-form-field>
         </div>
         <div align="center" style="width: 100%;">
           <mat-form-field appearance="outline" style="width: 100%; max-width: 500px;">
             <mat-label>Description</mat-label>
             <input matInput placeholder="Description" id="description" formControlName="description">
+            <mat-error *ngIf="recipeForm.controls?.description?.errors?.required === true">Description is required!
+            </mat-error>
           </mat-form-field>
         </div>
         <div align="center" style="width: 100%;">
@@ -36,10 +42,16 @@
                   style="width: 50%; max-width: 300px; margin-right: 50px; margin-left: 63px">
                   <mat-label>Ingredient Name</mat-label>
                   <input matInput placeholder="Ingredient Name" id="name" formControlName="name">
+                  <mat-error *ngIf="recipeForm.controls.ingredients.controls[i].controls?.name?.errors?.required">
+                    Ingredient Name is required!
+                  </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="outline" style="width: 40%; max-width: 150px; margin-right: 25px;">
                   <mat-label>Quantity</mat-label>
                   <input type="number" matInput placeholder="Amount" id="amount" formControlName="amount">
+                  <mat-error *ngIf="recipeForm.controls.ingredients.controls[i].controls?.amount?.errors?.required">
+                    Amount is required!
+                  </mat-error>
                 </mat-form-field>
                 <button type="button" class="btn btn-success" (click)="onAddIngredient()" style="
               font-size: 32px;
@@ -56,10 +68,16 @@
                   style="width: 50%; max-width: 300px; margin-right: 50px; margin-left: 63px">
                   <mat-label>Ingredient Name</mat-label>
                   <input matInput placeholder="Ingredient Name" id="name" formControlName="name">
+                  <mat-error *ngIf="recipeForm.controls.ingredients.controls[i].controls?.name?.errors?.required">
+                    Ingredient Name is required!
+                  </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="outline" style="width: 40%; max-width: 150px; margin-right: 25px;">
                   <mat-label>Quantity</mat-label>
                   <input type="number" matInput placeholder="Amount" id="amount" formControlName="amount">
+                  <mat-error *ngIf="recipeForm.controls.ingredients.controls[i].controls?.amount?.errors?.required">
+                    Amount is required!
+                  </mat-error>
                 </mat-form-field>
                 <button type="button" class="btn btn-danger" (click)="onDeleteIngredient(i)" style="
                 font-size: 28px;
