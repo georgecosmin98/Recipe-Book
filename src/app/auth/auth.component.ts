@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 import { Observable, Subscription } from "rxjs";
 import { AlertComponent } from "../shared/alert/alert.component";
 import { PlaceholderDirective } from "../shared/placeholder/placeholder.directive";
-import { AuthResponseData, AuthService } from "./auth.service";
+import { AuthResponseData, AuthResponseDataBackend, AuthService } from "./auth.service";
 
 @Component({
     selector: 'app-auth',
@@ -39,7 +39,7 @@ export class AuthComponent implements OnDestroy,OnInit {
 
         this.isLoading = true;
 
-        let authObs: Observable<AuthResponseData>;
+        let authObs: Observable<AuthResponseDataBackend>;
 
         if (this.isLoginMode) {
             authObs = this.authService.login(email, password);
